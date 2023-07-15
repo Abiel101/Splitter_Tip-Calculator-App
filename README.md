@@ -1,7 +1,3 @@
-<<<<<<< HEAD
-# Splitter_Tip-Calculator-App
-A responsive tip calculator app that gives you percentages but also allows you to add a custom amount for your tips
-=======
 # Using the Figma design file
 
 Using this design file will help you practice building projects in the same way professionals do. Seeing the details in the design will help you improve your accuracy when building projects and build projects faster.
