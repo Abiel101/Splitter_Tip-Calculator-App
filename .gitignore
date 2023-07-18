@@ -16,4 +16,4 @@
 .prettierignore
 
 # Avoid uploading node Modules
-node_module
+node_modules
