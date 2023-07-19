@@ -17,30 +17,77 @@
   <script src="https://unpkg.com/split-type"></script>
 </head>
 <body>
+  <main class="flex flex-col items-center font-space-mono bg-lightGrayishCyan pt-14">
+    <div>
+      <img src="./images/logo.svg" alt="Splitter logo">
+    </div>
+    <div class=" w-full flex flex-col items-center rounded-t-3xl bg-white mt-10 p-8">
+      <!-- left side of form (Inputs) -->
+      <section>
+        <!-- Amount of the bill input -->
+        <div>
+          <label class="label-styles" for="bill">Bill</label>
+          <!-- Input and Icon -->
+          <div class="relative flex items-center">
+            <div class="absolute left-4 flex items-center justify-center">
+              <img src="./images/icon-dollar.svg">
+            </div>
+            <input id="bill" type="number" pattern="[0-9]*" inputmode="numeric" placeholder="0" class="text-right mt-1.5 p-2 px-4 text-2xl outline-none bg-inputBg rounded-md text-veryDarkCyan font-bold">
+            <!-- Note look to add the decimal amount automatically in the bill if possible. -->
+          </div>
+        </div>
+        <!-- Tip percentages -->
+        <div class="mt-8 w-full p-0">
+          <h2 class="label-styles mb-4">Select Tip %</h2>
+          <div class="grid grid-cols-2 gap-4">
+            <span onclick="setTipTo(5)" class="tip-btns">5%</span>
+            <span onclick="setTipTo(10)" class="tip-btns">10%</span>
+            <span onclick="setTipTo(15)" class="tip-btns">15%</span>
+            <span onclick="setTipTo(25)" class="tip-btns">25%</span>
+            <span onclick="setTipTo(50)" class="tip-btns">50%</span>
+            <input id="customInput" type="text" class="customInput" placeholder="Custom">
+          </div>
+        </div>
+        <!-- Number of People -->
+        <div class="mt-8 mb-8">
+          <label class="label-styles" for="numberOfPeople">Number Of People</label>
+          <!-- Input and Icon -->
+          <div class="relative flex items-center">
+            <div class="absolute left-4 flex items-center justify-center">
+              <img src="./images/icon-person.svg">
+            </div>
+            <input id="numberOfPeople" type="number" pattern="[0-9]*" inputmode="numeric" placeholder="0" class="text-right mt-1.5 p-2 px-4 text-2xl outline-none bg-inputBg rounded-md text-veryDarkCyan font-bold">
+          </div>
+        </div>
+      </section>
 
-  Bill
-
-  Select Tip %
-  5%
-  10%
-  15%
-  25%
-  50%
-  Custom
-
-  Number of People
-
-  Tip Amount
-  / person
-
-  Total
-  / person
-
-  Reset
+      <!-- Right side of form (Results) -->
+      <section class="bg-veryDarkCyan text-white w-full rounded-2xl px-[23px] pb-8 pt-9">
+        <!-- Tip Amount -->
+        <div class="flex justify-between items-center">
+          <div>
+            <h2 class="text-base">Tip Amount</h2>
+            <h3 class="text-xs text-grayishCyan">/ person</h3>
+          </div>
+          <p class="text-[32px] font-semibold text-strongCyan">$<span id="tipAmount">0.00</span></p>
+        </div>
+        <!-- Total Amount -->
+        <div class="flex w-full justify-between items-center mt-5">
+          <div>
+            <h2 class="text-base">Total</h2>
+            <h3 class="text-xs text-grayishCyan">/ person</h3>
+          </div>
+          <p class="text-[32px] font-semibold text-strongCyan">$<span id="total">0.00</span></p>
+        </div>
+        <!-- Reset Button -->
+        <button onclick="resetEverything()" class="w-full py-2 mt-8 uppercase bg-strongCyan rounded-md font-semibold text-veryDarkCyan">Reset</button>
+      </section>
+    </div>
+  </main>
   
   <div class="w-full h-screen flex items-center justify-center snap-center">
-    <p class="text-center">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="text-green-300 hover:text-purple-200 ml-1">Frontend Mentor</a>. 
-    Coded by <a class="text-green-300 hover:text-purple-200 ml-1" href="https://www.frontendmentor.io/profile/Abiel101"> Abiel Ortega </a>.
+    <p class="text-center">Challenge by <a href="https://www.frontendmentor.io?ref=challenge" target="_blank" class="text-cyan-600 hover:text-cyan-300 ml-1">Frontend Mentor</a>. 
+    Coded by <a class="text-cyan-600 hover:text-cyan-300 ml-1" href="https://www.frontendmentor.io/profile/Abiel101"> Abiel Ortega </a>.
     </p>
   </div>
 

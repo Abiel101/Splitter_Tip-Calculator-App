@@ -1,3 +1,36 @@
+@import url('https://fonts.googleapis.com/css2?family=Space+Mono:ital,wght@0,400;0,700;1,400;1,700&display=swap');
+
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+/* This hides the arrows at the end of the number inputs. */
+@layer base {
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+}
+.scrollBar::-webkit-scrollbar {
+  display: none;
+}
+/* Hide scrollbar for IE, Edge and Firefox */
+.scrollBar {
+  -ms-overflow-style: none;  /* IE and Edge */
+  scrollbar-width: none;  /* Firefox */
+}
+
+.tip-btns{
+  @apply flex items-center justify-center w-36 h-12 text-2xl font-bold rounded-md bg-veryDarkCyan text-white hover:bg-strongCyan hover:text-veryDarkCyan focus:bg-strongCyan focus:text-veryDarkCyan active:bg-strongCyan active:text-veryDarkCyan transition duration-200 ease-in-out cursor-pointer
+}
+
+/* .error{
+  @apply
+} */
+
+.label-styles{
+  @apply font-bold text-base text-darkGrayishCyan
+}
+.customInput{
+  @apply w-36 h-12 text-2xl text-right font-bold text-veryDarkCyan bg-veryLightGrayishCyan pr-4
+}
