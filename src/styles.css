@@ -21,16 +21,20 @@
 }
 
 .tip-btns{
-  @apply flex items-center justify-center w-36 h-12 text-2xl font-bold rounded-md bg-veryDarkCyan text-white hover:bg-strongCyan hover:text-veryDarkCyan focus:bg-strongCyan focus:text-veryDarkCyan active:bg-strongCyan active:text-veryDarkCyan transition duration-200 ease-in-out cursor-pointer
+  @apply flex items-center justify-center w-36 h-12 text-2xl font-bold rounded-md bg-veryDarkCyan text-white hover:bg-strongCyan hover:text-veryDarkCyan focus:bg-strongCyan focus:text-veryDarkCyan transition duration-200 ease-in-out cursor-pointer
 }
-
-/* .error{
-  @apply
-} */
-
+.goodBorder{
+  @apply border-white border-2 focus:border-strongCyan outline-none
+}
+.errorBorder{
+  @apply border-errorRed border-2 focus:border-errorRed outline-none
+}
+.textError{
+  @apply -translate-y-5
+}
 .label-styles{
   @apply font-bold text-base text-darkGrayishCyan
 }
 .customInput{
-  @apply w-36 h-12 text-2xl text-right font-bold text-veryDarkCyan bg-veryLightGrayishCyan pr-4
+  @apply w-36 h-12 text-2xl text-right font-bold rounded-md text-veryDarkCyan bg-veryLightGrayishCyan pr-4
 }

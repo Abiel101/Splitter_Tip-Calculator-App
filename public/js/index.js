@@ -3,12 +3,12 @@ const total = document.getElementById('total');
 const tipAmount = document.getElementById('tipAmount');
 const numberOfPeople = document.getElementById('numberOfPeople');
 const bill = document.getElementById('bill');
+const errorText = document.getElementById('errorText')
 
-let tip = 0;
 
 function setTipTo(tipAmount){
-  tip = tipAmount/100
-  console.log(tip/100);
+  let tip = tipAmount/100
+  console.log(tip);
 }
 
 function resetEverything(){
@@ -18,3 +18,9 @@ function resetEverything(){
   total.innerText = '0.00';
   tipAmount.innerText = '0.00';
 }
+
+numberOfPeople.addEventListener('click', ()=>{
+    errorText.classList.add('textError');
+    errorText.innerHTML = 'Cant be zero';
+})
+

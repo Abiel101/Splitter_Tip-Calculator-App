@@ -12,6 +12,7 @@ module.exports = {
         'lightGrayishCyan': 'hsl(185, 41%, 84%)',
         'veryLightGrayishCyan': 'hsl(189, 41%, 97%)',
         'White': 'hsl(0, 0%, 100%)',
+        'errorRed': '#E17457',
       },
       fontFamily:{
         'space-mono': 'Space Mono'
