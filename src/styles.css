@@ -32,6 +32,9 @@
 .textError{
   @apply -translate-y-5
 }
+.textGood{
+  @apply translate-y-0
+}
 .label-styles{
   @apply font-bold text-base text-darkGrayishCyan
 }

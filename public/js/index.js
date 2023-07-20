@@ -19,8 +19,17 @@ function resetEverything(){
   tipAmount.innerText = '0.00';
 }
 
-numberOfPeople.addEventListener('click', ()=>{
-    errorText.classList.add('textError');
-    errorText.innerHTML = 'Cant be zero';
+numberOfPeople.addEventListener('focusout', () =>{
+    if(numberOfPeople.value == 0){
+      errorText.classList.add('textError');
+      numberOfPeople.classList.remove('goodBorder');
+      numberOfPeople.classList.add('errorBorder');
+      errorText.innerHTML = 'Cant be zero';
+    }else{
+      errorText.classList.remove('textError');
+      numberOfPeople.classList.add('goodBorder');
+      numberOfPeople.classList.remove('errorBorder');
+      errorText.innerHTML = '';
+    }
 })
 
