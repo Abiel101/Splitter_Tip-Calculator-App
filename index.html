@@ -32,19 +32,19 @@
             <div class="absolute left-4 flex items-center justify-center">
               <img src="./images/icon-dollar.svg">
             </div>
+            <!-- Todo: Add ability to only do 2 decimal places for inputs -->
             <input id="bill" type="number" pattern="[0-9]*" inputmode="decimal" placeholder="0" class="w-full text-right mt-1.5 p-2 px-4 text-2xl outline-none bg-inputBg rounded-md text-veryDarkCyan font-bold goodBorder">
-            <!-- Note look to add the decimal amount automatically in the bill if possible. -->
           </div>
         </div>
         <!-- Tip percentages -->
         <div class="mt-8 w-full p-0">
           <h2 class="label-styles mb-4">Select Tip %</h2>
           <div class="grid grid-cols-2 gap-4 lg:grid-cols-3">
-            <span onclick="setTipTo(5)" class="tip-btns">5%</span>
-            <span onclick="setTipTo(10)" class="tip-btns">10%</span>
-            <span onclick="setTipTo(15)" class="tip-btns">15%</span>
-            <span onclick="setTipTo(25)" class="tip-btns">25%</span>
-            <span onclick="setTipTo(50)" class="tip-btns">50%</span>
+            <span id="tipBtn" onclick="setTipTo(5)" class="tip-btns tip-btns-normal">5%</span>
+            <span id="tipBtn" onclick="setTipTo(10)" class="tip-btns tip-btns-normal">10%</span>
+            <span id="tipBtn" onclick="setTipTo(15)" class="tip-btns tip-btns-normal">15%</span>
+            <span id="tipBtn" onclick="setTipTo(25)" class="tip-btns tip-btns-normal">25%</span>
+            <span id="tipBtn" onclick="setTipTo(50)" class="tip-btns tip-btns-normal">50%</span>
             <input id="customInput" type="number" pattern="[0-9]*" inputmode="decimal" class="customInput goodBorder" placeholder="Custom">
           </div>
         </div>
@@ -83,7 +83,7 @@
           </div>
         </div>
         <!-- Reset Button -->
-        <button onclick="resetEverything()" class="w-full py-2 mt-8 uppercase bg-strongCyan rounded-md font-semibold text-veryDarkCyan lg:py-3 opacity-20 cursor-not-allowed">Reset</button>
+        <button id="resetBtn" class="inactive">Reset</button>
       </section>
     </div>
   </main>
