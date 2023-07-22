@@ -13,23 +13,53 @@ const errorText = document.getElementById('errorText')
 const resetBtn = document.getElementById('resetBtn');
 
 
+/* -------------------------------------
+Sets up the US dollar (might make it for other currencies).
+-------------------------------------*/
+let USDollar = new Intl.NumberFormat('en-US', {
+  style: 'currency',
+  currency: 'USD',
+});
+totalOutput.innerHTML = USDollar.format(0);
+tipAmountOutput.innerHTML = USDollar.format(0);
 
-/*----------------------------------------
-Even listeners for when there is changes in inputs
-----------------------------------------*/
+
+/* -------------------------------
+Main function that runs to give output result
+-------------------------------*/
 let bill = 0;
 let numOfPeople = 0;
 let customTip = 0;
 let percentage = 0;
-let tipCheck = 0
 
-// let tipTotal = bill * percentage;
-// let tipPerPerson = tipTotal / numberOfPeopleInput.value;
-// let totalPerPerson = tipPerPerson + (billInput.value / numberOfPeopleInput.value);
+function outPutResults(){
+  let tipTotal = bill * percentage;
+  let tipPerPerson = tipTotal / numOfPeople;
+  let totalPerPerson = tipPerPerson + (bill / numOfPeople);
 
+  if(bill > 0 && percentage > 0 && numOfPeople > 0){
+    //Need to move these for the runction to animate up and down the numbers.
+    tipAmountOutput.innerHTML = USDollar.format(tipPerPerson);
+    totalOutput.innerHTML = USDollar.format(totalPerPerson);
+    
+    resetBtn.classList.remove('inactive');
+    resetBtn.classList.add('active');
+  }else if(bill > 0 && customTip > 0 && numOfPeople > 0){
+    //Need to move these for the runction to animate up and down the numbers.
+    tipAmountOutput.innerHTML = tipPerPerson;
+    totalOutput.innerHTML = totalPerPerson;
+
+    resetBtn.classList.remove('inactive');
+    resetBtn.classList.add('active');
+  }else{
+    console.log('Not Ready');
+  }
+}
+/*----------------------------------------
+Even listeners for when there is changes in inputs
+----------------------------------------*/
 function setTipTo(tipAmount){
   percentage = tipAmount/100;
-  tipCheck = tipAmount;
 }
 // Event listeners to listen for any changes in all inputs and clicked buttons
 billInput.addEventListener('change', ()=>{
@@ -50,23 +80,6 @@ Array.from(btnInput).forEach(btn => btn.addEventListener('click', ()=>{
 }))
 
 
-
-function outPutResults(){
-  if(bill > 0 && percentage > 0 && numOfPeople > 0){
-    // Console log needed data
-    console.log(`Bill: ${bill} \nCustom Tip: ${customTip} \nNumber Of People: ${numOfPeople} \nTip In Decimal: ${percentage}`)
-    
-    resetBtn.classList.remove('inactive');
-    resetBtn.classList.add('active');
-  }else if(bill > 0 && customTip > 0 && numOfPeople > 0){
-    console.log(`Bill: ${bill} \nCustom Tip: ${customTip} \nNumber Of People: ${numOfPeople} \nTip In Decimal: ${percentage}`)
-
-    resetBtn.classList.remove('inactive');
-    resetBtn.classList.add('active');
-  }else{
-    console.log('Not Ready');
-  }
-}
 
 
 // Changes the state of the buttons when you click on them
@@ -106,15 +119,17 @@ resetBtn.addEventListener('click', ()=>{
     customTip = 0;
     percentage = 0;
     tipCheck = 0
+
     numberOfPeopleInput.value = '';
     billInput.value = '';
     customInput.value = '';
     total.innerText = '0.00';
     tipAmount.innerText = '0.00';
-    checkActive();
     resetBtn.classList.remove('active')
     resetBtn.classList.add('inactive')
-    console.log(bill, numOfPeople, customTip, percentage, tipCheck);
+
+    checkActive();
+    console.log(bill, numOfPeople, customTip, percentage);
   }
 })
 
