@@ -64,7 +64,7 @@ function setTipTo(tipAmount){
   percentage = tipAmount/100;
 }
 // Event listeners to listen for any changes in all inputs and clicked buttons
-billInput.addEventListener('change', ()=>{
+billInput.addEventListener('input', ()=>{
   bill = billInput.value;
   outPutResults();
 })
@@ -74,7 +74,7 @@ customInput.addEventListener('input', ()=>{
   checkActive();
   outPutResults();
 })
-numberOfPeopleInput.addEventListener('change', ()=>{
+numberOfPeopleInput.addEventListener('input', ()=>{
   numOfPeople = numberOfPeopleInput.value;
   outPutResults();
 })
