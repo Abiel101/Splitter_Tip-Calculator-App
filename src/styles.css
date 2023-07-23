@@ -40,9 +40,6 @@
 .textError{
   @apply -translate-y-5
 }
-.textGood{
-  @apply translate-y-0
-}
 
 /* Active and Inactive state of reset button */
 .inactive{

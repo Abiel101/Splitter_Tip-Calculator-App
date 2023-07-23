@@ -32,29 +32,30 @@ let numOfPeople = 0;
 let customTip = 0;
 let percentage = 0;
 
-function outPutResults(){
-  let tipTotal = bill * percentage;
+function result(tip){ //This gets called depending which tip I am using and outputs resutls
+  let tipTotal = bill * tip;
   let tipPerPerson = tipTotal / numOfPeople;
   let totalPerPerson = tipPerPerson + (bill / numOfPeople);
-
+  tipAmountOutput.innerHTML = USDollar.format(tipPerPerson);
+  totalOutput.innerHTML = USDollar.format(totalPerPerson);
+}
+function outPutResults(){
   if(bill > 0 && percentage > 0 && numOfPeople > 0){
     //Need to move these for the runction to animate up and down the numbers.
-    tipAmountOutput.innerHTML = USDollar.format(tipPerPerson);
-    totalOutput.innerHTML = USDollar.format(totalPerPerson);
-    
+    result(percentage);
     resetBtn.classList.remove('inactive');
     resetBtn.classList.add('active');
   }else if(bill > 0 && customTip > 0 && numOfPeople > 0){
     //Need to move these for the runction to animate up and down the numbers.
-    tipAmountOutput.innerHTML = tipPerPerson;
-    totalOutput.innerHTML = totalPerPerson;
-
+    result(customTip);
     resetBtn.classList.remove('inactive');
     resetBtn.classList.add('active');
   }else{
     console.log('Not Ready');
   }
 }
+
+
 /*----------------------------------------
 Even listeners for when there is changes in inputs
 ----------------------------------------*/
@@ -66,8 +67,10 @@ billInput.addEventListener('change', ()=>{
   bill = billInput.value;
   outPutResults();
 })
-customInput.addEventListener('change', ()=>{
-  customTip = customInput.value;
+customInput.addEventListener('input', ()=>{
+  customTip = customInput.value/100;
+  percentage = 0;
+  checkActive();
   outPutResults();
 })
 numberOfPeopleInput.addEventListener('change', ()=>{
@@ -136,13 +139,12 @@ resetBtn.addEventListener('click', ()=>{
 // Function to give error when nothing has been inputed for number of people
 numberOfPeopleInput.addEventListener('focusout', () =>{
     if(numberOfPeopleInput.value == 0){
+      errorText.innerHTML = 'Can\'t be zero';
       errorText.classList.add('textError');
       numberOfPeopleInput.classList.remove('goodBorder');
       numberOfPeopleInput.classList.add('errorBorder');
-      errorText.innerHTML = 'Cant be zero';
     }else{
       errorText.classList.remove('textError');
-      errorText.classList.add('textGood');
       numberOfPeopleInput.classList.add('goodBorder');
       numberOfPeopleInput.classList.remove('errorBorder');
       errorText.innerHTML = '';
