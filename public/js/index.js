@@ -32,7 +32,8 @@ let numOfPeople = 0;
 let customTip = 0;
 let percentage = 0;
 
-function result(tip){ //This gets called depending which tip I am using and outputs resutls
+//This gets called depending which tip I am using and outputs resutls
+function result(tip){ 
   let tipTotal = bill * tip;
   let tipPerPerson = tipTotal / numOfPeople;
   let totalPerPerson = tipPerPerson + (bill / numOfPeople);
@@ -83,9 +84,9 @@ Array.from(btnInput).forEach(btn => btn.addEventListener('click', ()=>{
 }))
 
 
-
-
-// Changes the state of the buttons when you click on them
+/* -------------------------------------------------
+Changes the state of the buttons when you click on them
+------------------------------------------------- */
 function checkActive(){
   for(let i = 0; i < btnInput.length; i++){
     if(btnInput[i].classList.contains('tip-btns-active')){
@@ -114,7 +115,9 @@ btnInput[4].addEventListener('click', ()=>{
   btnInput[4].classList.add('tip-btns-active');
 })
 
-// Reset Button to reset everything
+/* ------------------------------
+Reset Button to reset everything
+------------------------------ */
 resetBtn.addEventListener('click', ()=>{
   if(resetBtn.classList.contains('active')){
     bill = 0;
@@ -136,7 +139,9 @@ resetBtn.addEventListener('click', ()=>{
   }
 })
 
-// Function to give error when nothing has been inputed for number of people
+/* ----------------------------------------------------------------------
+Function to give error when nothing has been inputed for number of people
+---------------------------------------------------------------------- */
 numberOfPeopleInput.addEventListener('focusout', () =>{
     if(numberOfPeopleInput.value == 0){
       errorText.innerHTML = 'Can\'t be zero';
