@@ -129,8 +129,8 @@ resetBtn.addEventListener('click', ()=>{
     numberOfPeopleInput.value = '';
     billInput.value = '';
     customInput.value = '';
-    total.innerText = '0.00';
-    tipAmount.innerText = '0.00';
+    total.innerText = USDollar.format(0);
+    tipAmount.innerText = USDollar.format(0);
     resetBtn.classList.remove('active')
     resetBtn.classList.add('inactive')
 
