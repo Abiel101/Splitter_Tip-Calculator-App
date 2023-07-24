@@ -7,7 +7,6 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 - [Overview](#overview)
   - [The challenge](#the-challenge)
   - [Screenshot](#screenshot)
-  - [Links](#links)
 - [My process](#my-process)
   - [Built with](#built-with)
   - [What I learned](#what-i-learned)
@@ -16,12 +15,9 @@ This is a solution to the [Tip calculator app challenge on Frontend Mentor](http
 - [Author](#author)
 - [Acknowledgments](#acknowledgments)
 
-**Note: Delete this note and update the table of contents based on what sections you keep.**
-
 ## Overview
 
 ### The challenge
-
 Users should be able to:
 
 - View the optimal layout for the app depending on their device's screen size
@@ -30,66 +26,91 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
-
-Add a screenshot of your solution. The easiest way to do this is to use Firefox to view your project, right-click the page and select "Take a Screenshot". You can choose either a full-height screenshot or a cropped one based on how long the page is. If it's very long, it might be best to crop it.
-
-Alternatively, you can use a tool like [FireShot](https://getfireshot.com/) to take the screenshot. FireShot has a free option, so you don't need to purchase it. 
-
-Then crop/optimize/edit your image however you like, add it to your project, and update the file path in the image above.
-
-**Note: Delete this note and the paragraphs above when you add your screenshot. If you prefer not to add a screenshot, feel free to remove this entire section.**
+![Desktop Complete](./design/desktop-design-completed.jpg)
 
 ### Links
-
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Live Site URL: [Demo](https://abiel101.github.io/Splitter_Tip-Calculator-App/)
 
 ## My process
 
 ### Built with
-
 - HTML5
 - Tailwind CSS
 - Javascript
 - NodeJs
-- GSAP
+
 ### What I learned
 
-Use this section to recap over some of your major learnings while working through this project. Writing these out and providing code samples of areas you want to highlight is a great way to reinforce your own knowledge.
+Building this project was a whole lot of fun, but It really did push me to come out of my comfort zone. One of the hardest challenges I had was actually figuring out how I can use an event listener to constantly be checking for the user input. If you notice, there is not "submit" button so that means that once the user inputs all field it should display the result. To make this happened I gave all inputs and btns there own event listeners that called a function. The function that was called then checked if all inputs where inputed and if not it will console log "Not Ready".
 
-To see how you can add code snippets, see below:
-
-```html
-<h1>Some HTML code I'm proud of</h1>
-```
-```css
-.proud-of-this-css {
-  color: papayawhip;
+```javascript
+// This is called each time that there is a change in the inputs or tips  
+function outPutResults(){
+  if(bill > 0 && percentage > 0 && numOfPeople > 0){
+    result(percentage);
+    resetBtn.classList.remove('inactive');
+    resetBtn.classList.add('active');
+  }else if(bill > 0 && customTip > 0 && numOfPeople > 0){
+    result(customTip);
+    resetBtn.classList.remove('inactive');
+    resetBtn.classList.add('active');
+  }else{
+    console.log('Not Ready');
+  }
 }
 ```
-```js
-const proudOfThisFunc = () => {
-  console.log('🎉')
+Im also really proud of this piece of Javascript code.
+
+```Javascript
+function checkActive(){
+  for(let i = 0; i < btnInput.length; i++){
+    if(btnInput[i].classList.contains('tip-btns-active')){
+      btnInput[i].classList.remove('tip-btns-active');
+    }
+  }
 }
+btnInput[0].addEventListener('click', ()=>{
+  checkActive();
+  btnInput[0].classList.add('tip-btns-active');
+})
+btnInput[1].addEventListener('click', ()=>{
+  checkActive();
+  btnInput[1].classList.add('tip-btns-active');
+})
+btnInput[2].addEventListener('click', ()=>{
+  checkActive();
+  btnInput[2].classList.add('tip-btns-active');
+})
+btnInput[3].addEventListener('click', ()=>{
+  checkActive();
+  btnInput[3].classList.add('tip-btns-active');
+})
+btnInput[4].addEventListener('click', ()=>{
+  checkActive();
+  btnInput[4].classList.add('tip-btns-active');
+})
+
+// Custom input 
+customInput.addEventListener('input', ()=>{
+  customTip = customInput.value/100;
+  percentage = 0;
+  checkActive();
+  outPutResults();
+})
 ```
+This basically imitated the filling of selecting different buttons and unselecting the one that was previously selected. It sort of like using the radio buttons in html and being able to only select one at a time.
 
-If you want more help with writing markdown, we'd recommend checking out [The Markdown Guide](https://www.markdownguide.org/) to learn more.
+The way it works is that each button once it has been clicked, it called a function that sets all the buttons as `inactive`. Then after it has completed that it sets the button that was clicked to `active` that way the button that was clicked stays active until you click another button.
 
-**Note: Delete this note and the content within this section and replace with your own learnings.**
+As for the custom input, I had to figure out a way to set all the tip button in active so I just simply called the `checkActive()` function to set all the button to an inactive state once there was an input detected in the "customInput"
 
 ### Continued development
 
-Use this section to outline areas that you want to continue focusing on in future projects. These could be concepts you're still not completely comfortable with or techniques you found useful that you want to refine and perfect.
-
-**Note: Delete this note and the content within this section and replace with your own plans for continued development.**
+I am going to continue advancing my Javascript skills. Im thinking of adding `JQuery` to my skills, I hear that it make writing javascript a breeze.
 
 ### Useful resources
 
-- [Example resource 1](https://www.example.com) - This helped me for XYZ reason. I really liked this pattern and will use it going forward.
-- [Example resource 2](https://www.example.com) - This is an amazing article which helped me finally understand XYZ. I'd recommend it to anyone still learning this concept.
-
-**Note: Delete this note and replace the list above with resources that helped you during the challenge. These could come in handy for anyone viewing your solution or for yourself when you look back on this project in the future.**
+- [Tailwind CSS Website](https://tailwindcss.com/docs/installation) - This helps so much, it's like having a digital text book that you can quickly search for what ever you need.
 
 ## Author
 
